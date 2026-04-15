@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Score Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; }
+        input[type="number"] { width: 100%; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SAT Score Calculator</h1>
+        <label for="rawScore">Raw Score:</label>
+        <input type="number" id="rawScore" placeholder="Enter your raw score">
+        <label for="scoringCurve">Scoring Curve Adjustment:</label>
+        <input type="number" id="scoringCurve" placeholder="Enter adjustment value" value="0">
+        <button id="calculate">Calculate Score</button>
+        <h2 id="result"></h2>
+    </div>
+    <script>
+        document.getElementById('calculate').onclick = function() {
+            const rawScore = parseFloat(document.getElementById('rawScore').value);
+            const scoringCurve = parseFloat(document.getElementById('scoringCurve').value);
+            if (!isNaN(rawScore)) {
+                const adjustedScore = rawScore + scoringCurve;
+                document.getElementById('result').innerText = `Your adjusted SAT score is: ${adjustedScore}`;
+            } else {
+                document.getElementById('result').innerText = `Please enter a valid raw score.`;
+            }
+        };
+    </script>
+</body>
+</html>
